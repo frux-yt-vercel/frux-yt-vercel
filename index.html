@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRUX YT | SUPREME EDITION</title>
+    <style>
+        :root {
+            --neon-pink: #ff007f;
+            --neon-blue: #00d2ff;
+            --glass: rgba(10, 15, 30, 0.75);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background: #010105; 
+            min-height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            overflow: hidden; 
+            position: relative;
+        }
+
+        /* --- BACKGROUND GALAXY & PARTICLES --- */
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
+
+        /* FLOATING NATURE ELEMENTS (Your Images) */
+        .bg-element { position: absolute; z-index: 2; pointer-events: none; opacity: 0.7; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); }
+        
+        /* Sunflowers (1000056230.jpg) */
+        .flower-1 { top: 10%; left: 5%; width: 100px; animation: floatObj 8s infinite ease-in-out; }
+        .flower-2 { bottom: 15%; right: 10%; width: 80px; animation: floatObj 10s infinite ease-in-out reverse; }
+        
+        /* Butterfly (1000056231.jpg) */
+        .butterfly-1 { top: 20%; right: 20%; width: 60px; animation: flyObj 6s infinite ease-in-out; }
+
+        @keyframes floatObj { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-25px) rotate(15deg); } }
+        @keyframes flyObj { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px, -40px) scale(1.15); } }
+
+        /* --- AI MASCOT (LADKI - 1000056229.jpg) --- */
+        .mascot-container {
+            position: fixed; bottom: -10px; right: 0; width: 320px; z-index: 100;
+            animation: mascotWave 4s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px var(--neon-pink));
+        }
+        .mascot-container img { width: 100%; }
+
+        @keyframes mascotWave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* Speech Bubble */
+        .speech {
+            position: absolute; top: 10%; left: -50%; background: white; color: black;
+            padding: 10px 15px; border-radius: 15px; font-size: 11px; font-weight: bold;
+            display: none; animation: pop 0.4s ease-out; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        @keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
+
+        /* --- MAIN UI CARD --- */
+        .container {
+            width: 90%; max-width: 460px; background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px;
+            padding: 40px; backdrop-filter: blur(25px); z-index: 50;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8); text-align: center;
+        }
+
+        .title {
+            font-size: 32px; font-weight: 900; letter-spacing: 5px;
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 30px; animation: wobble 3s infinite ease-in-out;
+        }
+        @keyframes wobble { 0%, 100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg) scale(1.02); } }
+
+        input {
+            width: 100%; padding: 18px; background: rgba(0,0,0,0.5);
+            border: 1px solid var(--neon-blue); border-radius: 15px;
+            color: #00ffff; text-align: center; margin-bottom: 25px; outline: none;
+            transition: 0.3s; font-family: monospace;
+        }
+        input:focus { border-color: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); }
+
+        .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn {
+            padding: 18px; border-radius: 12px; border: none; font-weight: 900;
+            text-transform: uppercase; cursor: pointer; transition: 0.3s; font-size: 10px;
+        }
+        .btn-scan { background: var(--neon-blue); color: #000; box-shadow: 0 0 15px var(--neon-blue); }
+        .btn-cancel { background: transparent; border: 2px solid var(--neon-pink); color: var(--neon-pink); }
+        .btn-cancel:hover { background: var(--neon-pink); color: #fff; box-shadow: 0 0 20px var(--neon-pink); }
+
+        #res { display: none; margin-top: 30px; animation: slideUp 0.5s ease; }
+        .box { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; margin-bottom: 12px; border-left: 4px solid var(--neon-blue); text-align: left; }
+        .log-wrap { background: #000; padding: 15px; border-radius: 10px; font-size: 10px; color: #00ff88; max-height: 120px; overflow-y: auto; text-align: left; margin-top: 15px; border: 1px solid #111; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<img src="1000056230.jpg" class="bg-element flower-1" alt="flower">
+<img src="1000056230.jpg" class="bg-element flower-2" alt="flower">
+<img src="1000056231.jpg" class="bg-element butterfly-1" alt="butterfly">
+
+<div class="mascot-container">
+    <div class="speech" id="chat">Session Scanning...</div>
+    <img src="1000056229.jpg" alt="AI Mascot">
+</div>
+
+<div class="container">
+    <div class="title">FRUX YT</div>
+    
+    <input type="text" id="tk" placeholder="PASTE_ACCESS_TOKEN">
+
+    <div class="btn-row">
+        <button class="btn btn-scan" onclick="run('scan')">Analysis</button>
+        <button class="btn btn-cancel" onclick="run('cancel')">Pending Cancel</button>
+    </div>
+
+    <div id="res">
+        <div class="box">
+            <span style="font-size: 9px; color: #888;">CURRENT BIND</span><br>
+            <span id="v-mail" style="font-weight: 600;">...</span>
+        </div>
+        <div class="box" id="p-box">
+            <span style="font-size: 9px; color: #888;">PENDING STATUS</span><br>
+            <span id="v-pend" style="font-weight: 600;">...</span>
+        </div>
+        <div class="log-wrap">
+            <pre id="v-json">...</pre>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    // Star Background
+    particlesJS("particles-js", { "particles": { "number": { "value": 80 }, "color": { "value": "#ffffff" }, "size": { "value": 1.5 }, "move": { "enable": true, "speed": 1 } } });
+
+    function talk(text) {
+        const c = document.getElementById('chat');
+        c.innerText = text;
+        c.style.display = 'block';
+        setTimeout(() => c.style.display = 'none', 3000);
+    }
+
+    async function run(mode) {
+        const token = document.getElementById('tk').value;
+        if(!token) { talk("Token toh daalo!"); return; }
+
+        talk(mode === 'scan' ? "Analyzing data..." : "Terminating hacker...");
+
+        const method = mode === 'scan' ? 'GET' : 'POST';
+        const path = mode === 'scan' ? 'get_bind_info' : 'cancel_request';
+
+        try {
+            const r = await fetch(`/api/game/account_security/bind:${path}?app_id=100067&access_token=${token}`, { method });
+            const d = await r.json();
+
+            document.getElementById('v-json').innerText = JSON.stringify(d, null, 2);
+            document.getElementById('v-mail').innerText = d.email || "Not Found";
+            
+            const p = d.email_to_be_bind || d.email_to_be || "null";
+            const vp = document.getElementById('v-pend');
+            const pb = document.getElementById('p-box');
+
+            if(p !== "null") {
+                vp.innerText = p; vp.style.color = "#ff007f"; pb.style.borderLeftColor = "#ff007f";
+                talk("Warning: Hacker Detected!");
+            } else {
+                vp.innerText = "NO PENDING"; vp.style.color = "#00ff88"; pb.style.borderLeftColor = "#00ff88";
+                talk("Account is Clean!");
+            }
+
+            document.getElementById('res').style.display = 'block';
+            if(mode === 'cancel') { alert("CANCEL SIGNAL SENT!"); run('scan'); }
+        } catch (e) {
+            talk("API Error!");
+        }
+    }
+</script>
+</body>
+</html>
