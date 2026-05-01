@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRUX YT | NETLIFY SUPREME</title>
+    <title>FRUX YT | SUPREME EDITION</title>
     <style>
         :root {
             --neon-pink: #ff007f;
             --neon-blue: #00d2ff;
-            --glass: rgba(5, 10, 25, 0.8);
+            --glass: rgba(10, 15, 30, 0.85);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
@@ -23,168 +23,159 @@
             position: relative;
         }
 
-        /* --- BACKGROUND STARS --- */
-        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; opacity: 0.5; }
-
-        /* FLOATING ASSETS (Your Images) */
+        /* --- GALAXY & FLOATING ASSETS --- */
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; opacity: 0.6; }
+        
         .bg-element { position: absolute; z-index: 2; pointer-events: none; opacity: 0.8; }
         
-        /* Sunflowers */
-        .flower-1 { top: 10%; left: 5%; width: 110px; animation: floatObj 7s infinite ease-in-out; }
-        .flower-2 { bottom: 12%; right: 5%; width: 90px; animation: floatObj 9s infinite ease-in-out reverse; }
+        /* Sunflowers (1000056230.jpg) */
+        .flower-1 { top: 10%; left: 5%; width: 120px; filter: hue-rotate(280deg); animation: float 8s infinite ease-in-out; }
+        .flower-2 { bottom: 15%; right: 10%; width: 100px; filter: hue-rotate(200deg); animation: float 10s infinite ease-in-out reverse; }
         
-        /* Butterfly */
-        .butterfly-1 { top: 15%; right: 15%; width: 65px; animation: flyObj 5s infinite ease-in-out; }
+        /* Butterfly (1000056231.jpg) */
+        .butterfly { top: 20%; right: 20%; width: 70px; animation: fly 6s infinite ease-in-out; }
 
-        @keyframes floatObj { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(20deg); } }
-        @keyframes flyObj { 0%, 100% { transform: translate(0,0) rotate(0); } 50% { transform: translate(50px, -50px) rotate(15deg); } }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(15deg); } }
+        @keyframes fly { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px, -50px) scale(1.2); } }
 
-        /* --- AI MASCOT (LADKI) --- */
-        .mascot-container {
-            position: fixed; bottom: -15px; right: -10px; width: 330px; z-index: 100;
+        /* --- AI GIRL MASCOT (1000056229.jpg) --- */
+        .mascot-wrap {
+            position: fixed; bottom: -10px; right: 0; width: 350px; z-index: 100;
             animation: mascotWave 4s infinite ease-in-out;
             filter: drop-shadow(0 0 25px var(--neon-pink));
         }
-        .mascot-container img { width: 100%; }
-
-        @keyframes mascotWave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .mascot-wrap img { width: 100%; }
 
         /* Speech Bubble */
-        .chat-bubble {
+        .bubble {
             position: absolute; top: 15%; left: -40%; background: #fff; color: #000;
-            padding: 12px 18px; border-radius: 20px; font-size: 11px; font-weight: 800;
-            display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.4); animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 101; text-transform: uppercase;
+            padding: 12px 20px; border-radius: 20px; font-size: 11px; font-weight: 900;
+            display: none; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 101;
         }
-        @keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
 
-        /* --- MAIN UI --- */
-        .main-ui {
-            width: 90%; max-width: 480px; background: var(--glass);
-            border: 1px solid rgba(0, 210, 255, 0.2); border-radius: 25px;
-            padding: 45px; backdrop-filter: blur(30px); z-index: 50;
-            box-shadow: 0 20px 60px rgba(0,0,0,1); text-align: center;
+        /* --- MAIN DASHBOARD (Look like Image 1000056233.jpg) --- */
+        .dashboard {
+            width: 90%; max-width: 500px; background: var(--glass);
+            border: 2px solid rgba(0, 210, 255, 0.3); border-radius: 25px;
+            padding: 40px; backdrop-filter: blur(30px); z-index: 50;
+            box-shadow: 0 0 50px rgba(0,0,0,1); text-align: center;
         }
 
         .title {
-            font-size: 36px; font-weight: 900; letter-spacing: 7px;
-            background: linear-gradient(45deg, #fff, var(--neon-blue), var(--neon-pink));
+            font-size: 38px; font-weight: 900; letter-spacing: 6px;
+            background: linear-gradient(to right, #fff, var(--neon-blue), var(--neon-pink));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 35px; animation: wobble 2.5s infinite linear;
+            margin-bottom: 30px; text-transform: uppercase;
         }
-        @keyframes wobble { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05) rotate(1deg); } }
 
         input {
-            width: 100%; padding: 18px; background: rgba(0,0,0,0.6);
-            border: 1.5px solid var(--neon-blue); border-radius: 15px;
+            width: 100%; padding: 18px; background: rgba(0,0,0,0.7);
+            border: 1px solid var(--neon-pink); border-radius: 15px;
             color: #00ffff; text-align: center; margin-bottom: 25px; outline: none;
-            transition: 0.4s; font-weight: bold; letter-spacing: 1px;
+            font-weight: bold; font-family: monospace;
         }
-        input:focus { border-color: var(--neon-pink); box-shadow: 0 0 20px rgba(255, 0, 127, 0.3); }
 
-        .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .btn {
             padding: 18px; border-radius: 12px; border: none; font-weight: 900;
-            text-transform: uppercase; cursor: pointer; transition: 0.3s; font-size: 11px; letter-spacing: 1px;
+            text-transform: uppercase; cursor: pointer; transition: 0.3s; font-size: 11px;
         }
-        .btn-scan { background: var(--neon-blue); color: #000; box-shadow: 0 0 15px rgba(0, 210, 255, 0.5); }
-        .btn-cancel { background: transparent; border: 2px solid var(--neon-pink); color: var(--neon-pink); }
-        .btn-cancel:hover { background: var(--neon-pink); color: #fff; box-shadow: 0 0 20px var(--neon-pink); }
+        .btn-ana { background: var(--neon-blue); color: #000; box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
+        .btn-can { background: transparent; border: 2px solid var(--neon-pink); color: var(--neon-pink); }
+        .btn-can:hover { background: var(--neon-pink); color: #fff; box-shadow: 0 0 25px var(--neon-pink); }
 
-        #display-area { display: none; margin-top: 35px; animation: slideUp 0.6s ease-out; }
-        .info-card { background: rgba(255,255,255,0.05); padding: 18px; border-radius: 15px; margin-bottom: 15px; border-left: 5px solid var(--neon-blue); text-align: left; }
-        .json-box { background: #000; padding: 15px; border-radius: 12px; font-size: 10px; color: #00ff88; max-height: 130px; overflow-y: auto; text-align: left; border: 1px solid #1a1a1a; }
+        #output-area { display: none; margin-top: 30px; animation: fadeIn 0.5s ease; }
+        .data-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; margin-bottom: 15px; border-left: 5px solid var(--neon-blue); text-align: left; }
+        .json-viewer { background: #000; padding: 15px; border-radius: 10px; font-size: 10px; color: #00ff88; max-height: 120px; overflow-y: auto; text-align: left; border: 1px solid #222; }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes mascotWave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
     </style>
 </head>
 <body>
 
 <div id="particles-js"></div>
 
-<img src="1000056230.jpg" class="bg-element flower-1" alt="sunflower">
-<img src="1000056230.jpg" class="bg-element flower-2" alt="sunflower">
-<img src="1000056231.jpg" class="bg-element butterfly-1" alt="butterfly">
+<img src="1000056230.jpg" class="bg-element flower-1" alt="flower">
+<img src="1000056230.jpg" class="bg-element flower-2" alt="flower">
+<img src="1000056231.jpg" class="bg-element butterfly" alt="butterfly">
 
-<div class="mascot-container">
-    <div class="chat-bubble" id="status-chat">Ready to work!</div>
+<div class="mascot-wrap">
+    <div class="bubble" id="msg">Processing...</div>
     <img src="1000056229.jpg" alt="Mascot">
 </div>
 
-<div class="main-ui">
+<div class="dashboard">
     <div class="title">FRUX YT</div>
     
-    <input type="text" id="access_token" placeholder="PASTE_ACCESS_TOKEN_HERE">
+    <input type="text" id="token" placeholder="ENTER ACCESS TOKEN">
 
-    <div class="btn-row">
-        <button class="btn btn-scan" onclick="handleApi('scan')">Analysis</button>
-        <button class="btn btn-cancel" onclick="handleApi('cancel')">Pending Cancel</button>
+    <div class="btn-group">
+        <button class="btn btn-ana" onclick="fire('scan')">Analysis</button>
+        <button class="btn btn-can" onclick="fire('cancel')">Pending Cancel</button>
     </div>
 
-    <div id="display-area">
-        <div class="info-card">
-            <span style="font-size: 10px; color: #aaa;">CURRENT EMAIL</span><br>
-            <span id="mail-text" style="font-weight: bold; font-size: 14px;">...</span>
+    <div id="output-area">
+        <div class="data-card">
+            <span style="font-size: 10px; color: #888;">CURRENT BIND</span><br>
+            <span id="v-mail" style="font-weight: bold;">...</span>
         </div>
-        <div class="info-card" id="status-card">
-            <span style="font-size: 10px; color: #aaa;">SECURITY STATUS</span><br>
-            <span id="status-text" style="font-weight: bold; font-size: 14px;">...</span>
+        <div class="data-card" id="p-box">
+            <span style="font-size: 10px; color: #888;">PENDING REQUEST</span><br>
+            <span id="v-pend" style="font-weight: bold;">...</span>
         </div>
-        <div class="json-box">
-            <pre id="json-output">...</pre>
+        <div class="json-viewer">
+            <pre id="v-raw">Waiting for data...</pre>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-    particlesJS("particles-js", { "particles": { "number": { "value": 70 }, "move": { "enable": true, "speed": 1.2 }, "size": { "value": 1.5 } } });
+    particlesJS("particles-js", { "particles": { "number": { "value": 60 }, "move": { "enable": true, "speed": 1.5 }, "size": { "value": 2 } } });
 
-    function mascotSpeak(msg) {
-        const bubble = document.getElementById('status-chat');
-        bubble.innerText = msg;
-        bubble.style.display = 'block';
-        setTimeout(() => bubble.style.display = 'none', 3500);
+    function say(txt) {
+        const b = document.getElementById('msg');
+        b.innerText = txt; b.style.display = 'block';
+        setTimeout(() => b.style.display = 'none', 3500);
     }
 
-    async function handleApi(mode) {
-        const tk = document.getElementById('access_token').value;
-        if(!tk) { mascotSpeak("Token missing, Frux!"); return; }
+    async function fire(mode) {
+        const tk = document.getElementById('token').value;
+        if(!tk) { say("Token dalo bhai!"); return; }
 
-        mascotSpeak(mode === 'scan' ? "Analyzing database..." : "Purging pending requests!");
+        say(mode === 'scan' ? "Analyzing..." : "Sending Cancel Command!");
 
-        const endpoint = mode === 'scan' ? 'get_bind_info' : 'cancel_request';
-        const method = mode === 'scan' ? 'GET' : 'POST';
+        const ep = mode === 'scan' ? 'get_bind_info' : 'cancel_request';
+        const meth = mode === 'scan' ? 'GET' : 'POST';
 
         try {
-            // Netlify redirect path
-            const response = await fetch(`/api/game/account_security/bind:${endpoint}?app_id=100067&access_token=${tk}`, { method });
-            const data = await response.json();
+            // Netlify proxy request
+            const res = await fetch(`/api/game/account_security/bind:${ep}?app_id=100067&access_token=${tk}`, {
+                method: meth,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            });
+            const d = await res.json();
 
-            document.getElementById('json-output').innerText = JSON.stringify(data, null, 2);
-            document.getElementById('mail-text').innerText = data.email || "No Email Bound";
+            document.getElementById('v-raw').innerText = JSON.stringify(d, null, 2);
+            document.getElementById('v-mail').innerText = d.email || "Clean";
             
-            const pending = data.email_to_be_bind || data.email_to_be || "null";
-            const sText = document.getElementById('status-text');
-            const sCard = document.getElementById('status-card');
+            const p = d.email_to_be_bind || d.email_to_be || "null";
+            const vp = document.getElementById('v-pend');
+            const pb = document.getElementById('p-box');
 
-            if(pending !== "null") {
-                sText.innerText = "PENDING DETECTED: " + pending;
-                sText.style.color = "#ff007f";
-                sCard.style.borderLeftColor = "#ff007f";
-                mascotSpeak("Hacker Found! Use Cancel Button!");
+            if(p !== "null") {
+                vp.innerText = p; vp.style.color = "#ff007f"; pb.style.borderLeftColor = "#ff007f";
+                say("Hacker Detected!");
             } else {
-                sText.innerText = "SYSTEM SECURE";
-                sText.style.color = "#00ff88";
-                sCard.style.borderLeftColor = "#00ff88";
-                mascotSpeak("All clear! No pending Gmail.");
+                vp.innerText = "NO PENDING"; vp.style.color = "#00ff88"; pb.style.borderLeftColor = "#00ff88";
+                say("Safe Account!");
             }
 
-            document.getElementById('display-area').style.display = 'block';
-            if(mode === 'cancel') { alert("ACTION SUCCESSFUL!"); handleApi('scan'); }
-
-        } catch (err) {
-            mascotSpeak("Proxy Error! Check _redirects.");
+            document.getElementById('output-area').style.display = 'block';
+            if(mode === 'cancel') { alert("CANCEL DONE!"); fire('scan'); }
+        } catch (e) {
+            say("Network Error!");
         }
     }
 </script>
